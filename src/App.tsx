@@ -4,6 +4,7 @@ import Drawer from '@mui/material/Drawer';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Badge from '@mui/material/Badge';
 import { useQuery } from 'react-query';
+import { LinearProgress } from '@mui/material';
 // Types
 
 export type CartItemType ={
@@ -20,12 +21,12 @@ const  App=()=> {
       const {data,isLoading,error}= useQuery<CartItemType[]>('products',
            getProducts
       )
-      console.log('Data',data,isLoading,'error',error) 
-      
-      
       const getTotalItems=()=>null;
       const handleAddToCart=()=>null;
       const handleRemoveFromCart=()=>null;
+ 
+       if (isLoading ) return <Box sx={{ width: '100%' }}><LinearProgress /></Box>
+     
   return (
    <Box>Start</Box>
   );
